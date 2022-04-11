@@ -1,21 +1,46 @@
+import {gameContainer} from './board'
+
 const app = document.getElementById('app')
-const gameContainer = document.createElement('div')
-const playerSelection = document.createElement('div')
-const gameBoard = document.createElement('div')
-const playerX = document.createElement('div')
-const xSecondArm = document.createElement('div')
-const playerY = document.createElement('div')
-
-gameContainer.classList.add('game')
-playerSelection.classList.add('game__player-selection')
-gameBoard.classList.add('game__game-board')
-playerX.classList.add('player-selection__player-x')
-xSecondArm.classList.add('x-second-arm')
-playerY.classList.add('player-selection__player-y')
-
 app.appendChild(gameContainer)
-gameContainer.appendChild(playerSelection)
-gameContainer.appendChild(gameBoard)
-playerSelection.appendChild(playerX)
-playerSelection.appendChild(playerY)
-playerX.appendChild(xSecondArm)
+const playerX = document.querySelector('.x')
+const playerO = document.querySelector('.o')
+let userSelection = null
+
+const choosePlayerX = () => playerX.addEventListener('click', event => {
+    if (event.target.classList.contains('player-container__player-x')) {
+        event.target.parentNode.classList.add('chosen-player')
+        playerO.classList.add('disabled')
+        return
+    }
+    if (event.target.classList.contains('x-second-arm')) {
+        event.target.parentNode.parentNode.classList.add('chosen-player')
+        playerO.classList.add('disabled')
+        return
+    }
+    event.target.classList.add('chosen-player')
+    playerO.classList.add('disabled')
+    console.log('x')
+}, { once:true })
+
+const choosePlayerO = () => playerO.addEventListener('click', event => {
+    if (event.target.classList.contains('player-container__player-o')) {
+        event.target.parentNode.classList.add('chosen-player')
+        playerX.classList.add('disabled')
+        return
+    }
+    event.target.classList.add('chosen-player')
+    playerX.classList.add('disabled')
+    console.log('o')
+}, { once:true })
+
+
+const boardCells = document.querySelectorAll('.game-board__cell')
+const cellPick = () => boardCells.forEach(cell => {
+    cell.addEventListener('click', event => {
+        console.log(event.target)
+    })
+})
+
+choosePlayerX()
+choosePlayerO()
+cellPick()
