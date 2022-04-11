@@ -39,29 +39,37 @@ const choosePlayerO = () => playerO.addEventListener('click', event => {
 
 
 const boardCells = document.querySelectorAll('.game-board__cell')
-const randomIndex = Math.floor(Math.random() * boardCells.length)
-const cellPick = () => boardCells.forEach((cell, index) => {
+const cellPick = () => boardCells.forEach(cell => {
     cell.addEventListener('click', event => {
         if (userSelection === 'x') {
             createCross(cell)
             event.target.classList.add('disabled')
+            createRandom(boardCells, createCircle)
             return
         }
         if (userSelection === 'o') {
             createCircle(cell)
             event.target.classList.add('disabled')
-            createRandom()
+            createRandom(boardCells, createCross)
             return
         }
     })
 })
 
-function createRandom() {
-    boardCells.forEach((cell, index) => {
-        if (boardCells[randomIndex].hasChildNodes()) {
-            console.log('fire')
-            createCircle(cell)
+const checkBoard = (array) => {
+
+}
+
+const createRandom = (array, createShape) => {
+    const randomIndex = () => Math.floor(Math.random() * boardCells.length)
+    let newRandom = randomIndex()
+    array.forEach((cell, index) => {
+        if (index === newRandom && !array[newRandom].hasChildNodes()) {
+            createShape(cell)
+            cell.classList.add('disabled')
+            return
         }
+
     })
 }
 

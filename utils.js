@@ -13,8 +13,4 @@ const createCross = (parent) => {
     parent.appendChild(cross)
 }
 
-const createRandom = (shape, index) => {
-    
-}
-
 export { createCircle, createCross }
