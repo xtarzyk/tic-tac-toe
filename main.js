@@ -1,5 +1,5 @@
 import { gameContainer } from './board'
-import { createCircle, createCross, createRandom, checkWin, positionsMap } from './utils'
+import * as utils from './utils'
 
 const app = document.getElementById('app')
 app.appendChild(gameContainer)
@@ -47,21 +47,21 @@ const choosePlayerO = () => playerO.addEventListener('click', event => {
 const cellPick = () => boardCells.forEach((cell, index) => {
     cell.addEventListener('click', event => {
         if (userPlayer === 'x') {
-            createCross(cell)
+            utils.createCross(cell)
             event.target.classList.add('disabled')
-            positionsMap.splice(index, 1, userPlayer)
-            createRandom(boardCells, createCircle, positionsMap, computerPlayer)
-            console.log(positionsMap)
-            checkWin(userPlayer)
+            utils.positionsMap.splice(index, 1, userPlayer)
+            utils.createRandom(boardCells, utils.createCircle, utils.positionsMap, computerPlayer)
+            console.log(utils.positionsMap)
+            utils.checkWin(userPlayer)
             return
         }
         if (userPlayer === 'o') {
-            createCircle(cell)
+            utils.createCircle(cell)
             event.target.classList.add('disabled')
-            positionsMap.splice(index, 1, userPlayer)
-            createRandom(boardCells, createCross, positionsMap, computerPlayer)
-            console.log(positionsMap)
-            checkWin(userPlayer)
+            utils.positionsMap.splice(index, 1, userPlayer)
+            utils.createRandom(boardCells, utils.createCross, utils.positionsMap, computerPlayer)
+            console.log(utils.positionsMap)
+            utils.checkWin(userPlayer)
             return
         }
     })

@@ -11,14 +11,11 @@ const checkWin = player => {
         if (field.includes(player)) acc.push(index)
         return acc
     }, [])
-
     const checkConditions = winConditions.find(arr => arr.every(trio => checkPositions.includes(trio)))
     if (checkConditions) {
         alert(`${player} wins`)
         window.location.reload()
     }
-    console.log(checkPositions)
-    console.log(checkConditions)
 }
 
 const createCircle = (parent) => {
