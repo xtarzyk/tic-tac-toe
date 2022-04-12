@@ -16,6 +16,10 @@ const checkWin = player => {
         alert(`${player} wins`)
         window.location.reload()
     }
+    if(!positionsMap.includes('')) {
+        alert('Draw!')
+        window.location.reload()
+    }
 }
 
 const createCircle = (parent) => {
@@ -36,7 +40,6 @@ const createCross = (parent) => {
 const createRandom = (array, createShape, positionMap, computerPlayer) => {
     const spareIndexes = checkBoard()
     const randomIndex = spareIndexes[Math.floor(Math.random() * spareIndexes.length)]
-    console.log(randomIndex)
     array.forEach((cell, index) => {
         if (index === randomIndex) {
             createShape(cell)
