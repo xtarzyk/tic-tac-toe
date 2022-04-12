@@ -1,12 +1,25 @@
 const positionsMap = Array.from({ length:9 })
 positionsMap.fill('')
-console.log(positionsMap)
 
 const checkBoard = () => positionsMap
     .map((field, index) => field ? null : index)
     .filter(value => value != null)
 
-console.log(checkBoard())
+const checkWin = player => {
+    const winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+    const checkPositions = positionsMap.reduce((acc, field, index) => {
+        if (field.includes(player)) acc.push(index)
+        return acc
+    }, [])
+
+    const checkConditions = winConditions.find(arr => arr.every(trio => checkPositions.includes(trio)))
+    if (checkConditions) {
+        alert(`${player} wins`)
+        window.location.reload()
+    }
+    console.log(checkPositions)
+    console.log(checkConditions)
+}
 
 const createCircle = (parent) => {
     const circle = document.createElement('div')
@@ -28,12 +41,10 @@ const createRandom = (array, createShape, positionMap, computerPlayer) => {
     const randomIndex = spareIndexes[Math.floor(Math.random() * spareIndexes.length)]
     console.log(randomIndex)
     array.forEach((cell, index) => {
-        if (index === randomIndex /*&& !array[randomIndex].hasChildNodes()*/) {
+        if (index === randomIndex) {
             createShape(cell)
             cell.classList.add('disabled')
             positionsMap.splice(index, 1, computerPlayer)
-            console.log(checkBoard())
-            return
         }
     })
 }
@@ -42,5 +53,6 @@ export {
     createCircle,
     createCross,
     createRandom,
+    checkWin,
     positionsMap
 }

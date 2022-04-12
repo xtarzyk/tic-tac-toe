@@ -1,5 +1,5 @@
 import { gameContainer } from './board'
-import { createCircle, createCross, createRandom, positionsMap } from './utils'
+import { createCircle, createCross, createRandom, checkWin, positionsMap } from './utils'
 
 const app = document.getElementById('app')
 app.appendChild(gameContainer)
@@ -52,6 +52,7 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             positionsMap.splice(index, 1, userPlayer)
             createRandom(boardCells, createCircle, positionsMap, computerPlayer)
             console.log(positionsMap)
+            checkWin(userPlayer)
             return
         }
         if (userPlayer === 'o') {
@@ -60,6 +61,7 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             positionsMap.splice(index, 1, userPlayer)
             createRandom(boardCells, createCross, positionsMap, computerPlayer)
             console.log(positionsMap)
+            checkWin(userPlayer)
             return
         }
     })
