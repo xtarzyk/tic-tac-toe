@@ -2,3 +2,72 @@ body
   margin: 0
   padding: 0
   box-sizing: border-box
+
+div
+  display: flex
+
+.game
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 100vw
+  height: 100vh
+  background: #320954
+
+  &__player-selection
+    width: 400px
+    height: 200px
+    margin: 50px
+
+  &__game-board
+    justify-content: space-around
+    flex-wrap: wrap
+    width: 600px
+    height: 600px
+    background: #d6b8ea
+    border-radius: 5px
+    margin: 50px
+
+.game-board
+  &__cell
+    justify-content: center
+    align-items: center
+    width: 180px
+    height: 180px
+    margin: 5px
+    background-color: #591596
+    border-radius: 5px
+
+.player-selection
+  &__player-container
+    justify-content: center
+    align-items: center
+    background: #591596
+    width: 50%
+    margin: 20px
+    border-radius: 5px
+
+.player-container
+  &__player-x
+    width: 10px
+    height: 100px
+    background: white
+    transform: rotate(45deg)
+
+  &__player-o
+    width: 70px
+    height: 70px
+    border: 10px solid white
+    border-radius: 50%
+
+.x-second-arm
+  width: 10px
+  height: 100px
+  background: white
+  transform: rotate(90deg)
+
+.chosen-player
+  background: darkorange
+
+.disabled
+  pointer-events: none
