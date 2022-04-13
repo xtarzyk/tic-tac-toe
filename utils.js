@@ -14,8 +14,8 @@ const checkWin = player => {
         if (field.includes(player)) {
             return acc.concat(index)
         }
-        return acc
 
+        return acc
     }, [])
 
     const checkConditions = winConditions.find(arr => arr.every(trio => checkPositions.includes(trio)))
@@ -33,6 +33,7 @@ const checkWin = player => {
 
 const createCircle = parent => {
     const circle = document.createElement('div')
+
     circle.classList.add('player-container__player-o')
     parent.appendChild(circle)
 }
@@ -40,6 +41,7 @@ const createCircle = parent => {
 const createCross = parent => {
     const cross = document.createElement('div')
     const secondArm = document.createElement('div')
+
     cross.classList.add('player-container__player-x')
     secondArm.classList.add('x-second-arm')
     cross.appendChild(secondArm)
@@ -52,14 +54,12 @@ const createRandom = (array, createShape, positionMap, computerPlayer) => {
         const randomIndex = spareIndexes[Math.floor(Math.random() * spareIndexes.length)]
 
         array.forEach((cell, index) => {
-
             if (index === randomIndex) {
                 createShape(cell)
                 cell.classList.add('disabled')
-                positionsMap.splice(index, 1, computerPlayer)
+                positionsMap[index] = computerPlayer
             }
         })
-
         gameContainer.classList.remove('disabled')
     }, 1000)
 }

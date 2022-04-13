@@ -10,12 +10,12 @@ let userPlayer = ''
 let computerPlayer = ''
 
 const choosePlayerX = () => playerX.addEventListener('click', event => {
-
     if (event.target.classList.contains('player-container__player-x')) {
         event.target.parentNode.classList.add('chosen-player')
         playerO.classList.add('disabled')
         userPlayer = 'x'
         computerPlayer = 'o'
+
         return
     }
 
@@ -24,6 +24,7 @@ const choosePlayerX = () => playerX.addEventListener('click', event => {
         playerO.classList.add('disabled')
         userPlayer = 'x'
         computerPlayer = 'o'
+
         return
     }
 
@@ -34,12 +35,12 @@ const choosePlayerX = () => playerX.addEventListener('click', event => {
 }, { once: true })
 
 const choosePlayerO = () => playerO.addEventListener('click', event => {
-
     if (event.target.classList.contains('player-container__player-o')) {
         event.target.parentNode.classList.add('chosen-player')
         playerX.classList.add('disabled')
         userPlayer = 'o'
         computerPlayer = 'x'
+
         return
     }
 
@@ -47,12 +48,10 @@ const choosePlayerO = () => playerO.addEventListener('click', event => {
     playerX.classList.add('disabled')
     userPlayer = 'o'
     computerPlayer = 'x'
-
 }, { once: true })
 
 const cellPick = () => boardCells.forEach((cell, index) => {
     cell.addEventListener('click', event => {
-
         if (userPlayer === 'x') {
             utils.createCross(cell)
             event.target.classList.add('disabled')
@@ -61,6 +60,7 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             utils.createRandom(boardCells, utils.createCircle, utils.positionsMap, computerPlayer)
             utils.checkWin(userPlayer)
             utils.checkWin(computerPlayer)
+
             return
         }
 
@@ -72,9 +72,9 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             utils.createRandom(boardCells, utils.createCross, utils.positionsMap, computerPlayer)
             utils.checkWin(userPlayer)
             utils.checkWin(computerPlayer)
+
             return
         }
-
     })
 })
 
