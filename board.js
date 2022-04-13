@@ -6,7 +6,7 @@ const playerX = document.createElement('div')
 const xSecondArm = document.createElement('div')
 const playerY = document.createElement('div')
 const gameBoard = document.createElement('div')
-const boardArray = Array.from({ length:9 })
+const boardArray = Array.from({ length: 9 })
 const boardCell = document.createElement('div')
 
 gameContainer.classList.add('game')
@@ -33,9 +33,7 @@ const prepareBoard = () => boardArray.fill(boardCell)
 
 const createCells = () => {
     const cellsNodes = boardArray.map(() => boardCell.cloneNode(true))
-    cellsNodes.forEach(cellNode => {
-        gameBoard.appendChild(cellNode)
-    })
+    cellsNodes.forEach(cellNode => gameBoard.appendChild(cellNode))
     return cellsNodes
 }
 

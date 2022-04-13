@@ -49,7 +49,8 @@ const cellPick = () => boardCells.forEach((cell, index) => {
         if (userPlayer === 'x') {
             utils.createCross(cell)
             event.target.classList.add('disabled')
-            utils.positionsMap.splice(index, 1, userPlayer)
+            gameContainer.classList.add('disabled')
+            utils.positionsMap[index] = userPlayer
             utils.createRandom(boardCells, utils.createCircle, utils.positionsMap, computerPlayer)
             utils.checkWin(userPlayer)
             utils.checkWin(computerPlayer)
@@ -58,7 +59,8 @@ const cellPick = () => boardCells.forEach((cell, index) => {
         if (userPlayer === 'o') {
             utils.createCircle(cell)
             event.target.classList.add('disabled')
-            utils.positionsMap.splice(index, 1, userPlayer)
+            gameContainer.classList.add('disabled')
+            utils.positionsMap[index] = userPlayer
             utils.createRandom(boardCells, utils.createCross, utils.positionsMap, computerPlayer)
             utils.checkWin(userPlayer)
             utils.checkWin(computerPlayer)
