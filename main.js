@@ -10,6 +10,7 @@ let userPlayer = ''
 let computerPlayer = ''
 
 const choosePlayerX = () => playerX.addEventListener('click', event => {
+
     if (event.target.classList.contains('player-container__player-x')) {
         event.target.parentNode.classList.add('chosen-player')
         playerO.classList.add('disabled')
@@ -17,6 +18,7 @@ const choosePlayerX = () => playerX.addEventListener('click', event => {
         computerPlayer = 'o'
         return
     }
+
     if (event.target.classList.contains('x-second-arm')) {
         event.target.parentNode.parentNode.classList.add('chosen-player')
         playerO.classList.add('disabled')
@@ -24,6 +26,7 @@ const choosePlayerX = () => playerX.addEventListener('click', event => {
         computerPlayer = 'o'
         return
     }
+
     event.target.classList.add('chosen-player')
     playerO.classList.add('disabled')
     userPlayer = 'x'
@@ -31,6 +34,7 @@ const choosePlayerX = () => playerX.addEventListener('click', event => {
 }, { once: true })
 
 const choosePlayerO = () => playerO.addEventListener('click', event => {
+
     if (event.target.classList.contains('player-container__player-o')) {
         event.target.parentNode.classList.add('chosen-player')
         playerX.classList.add('disabled')
@@ -38,14 +42,17 @@ const choosePlayerO = () => playerO.addEventListener('click', event => {
         computerPlayer = 'x'
         return
     }
+
     event.target.classList.add('chosen-player')
     playerX.classList.add('disabled')
     userPlayer = 'o'
     computerPlayer = 'x'
+
 }, { once: true })
 
 const cellPick = () => boardCells.forEach((cell, index) => {
     cell.addEventListener('click', event => {
+
         if (userPlayer === 'x') {
             utils.createCross(cell)
             event.target.classList.add('disabled')
@@ -56,6 +63,7 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             utils.checkWin(computerPlayer)
             return
         }
+
         if (userPlayer === 'o') {
             utils.createCircle(cell)
             event.target.classList.add('disabled')
@@ -66,6 +74,7 @@ const cellPick = () => boardCells.forEach((cell, index) => {
             utils.checkWin(computerPlayer)
             return
         }
+
     })
 })
 
